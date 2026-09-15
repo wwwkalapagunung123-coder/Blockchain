@@ -1,5 +1,4 @@
 #Crowdfunding / Amal Transparan Sistem donasi dengan aliran dana yang dapat dilacak 100%
-#Crowdfunding / Amal Transparan Sistem donasi dengan aliran dana yang dapat dilacak 100%
 
 from block import Block
 
@@ -47,3 +46,12 @@ class Blockchain:
                 return False
 
         return True
+    def show(self):
+        for block in self.chain:
+            print("=" * 50)
+            print("Block :", block.index)
+            print("Timestamp  :", block.timestamp)
+            print("Data  :", block.data)
+            print("Previous Hash  :", block.previous_hash)
+            print("Nonce  :", block.nonce)
+            print("Hash  :", block.hash)

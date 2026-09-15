@@ -1,42 +1,40 @@
 #Crowdfunding / Amal Transparan Sistem donasi dengan aliran dana yang dapat dilacak 100%
 
-from blockchain import Blockchain
+from block import Block
+from pow import proof_of_work
+from pos import proof_of_stake
 
-blockchain = Blockchain()
+print("PROOF OF WORK (POW)")
 
-blockchain.add_block({
-    "donate_id": "DONATE-001",
-    "Nominal": "Rp. 32000000",
-    "actor": "Hamba_Allah",
-    "location": "Aceh"
-})
+block = Block(
+    index=1,
+    data="Donasi dari Hamba_Allah",
+    previous_hash="0"
+)
 
-blockchain.add_block({
-    "donate_id": "BATCH-001",
-    "Nominal": "Rp. 800000",
-    "actor": "Pengelola_donasi",
-    "location": "Cirebon"
-})
+difficulty = 4
 
-blockchain.add_block({
-    "donate_id": "BATCH-001",
-    "Nominal": "Rp. 1000000",
-    "actor": "Penerima_donasi",
-    "location": "Cirebon"
-})
+print("\nData Block :", block.data)
+print("Difficulty  :", difficulty)
 
-blockchain.add_block({
-    "donate_id": "BATCH-002",
-    "Nominal": "Rp. 5000000",
-    "actor": "Pemberi_donasi",
-    "location": "Cirebon"
-})
+proof_of_work(block, difficulty)
 
-for block in blockchain.chain:
-    print("=" * 50)
-    print("INDEX :", block.index)
-    print("DATA  :", block.data)
-    print("PREV  :", block.previous_hash)
-    print("HASH  :", block.hash)
+print("Nonce  :", block.nonce)
+print("Hash  :", block.hash)
 
-print("\nBlockchain valid:", blockchain.is_valid())
+print("PROOF OF STAKE (POS)")
+
+validators = {
+    "Donatur_1": 10,            # Pemberi dana (Bisa memferifikasi penerima awal)
+    "Platform_Admin": 20,       # pengelola sistem Crowdfunding
+    "Auditor_External": 30,     # Pihak independen yang memverifikasi aliran dana
+    "Beneficary": 40            # Penerima dana
+}
+
+print("\nValidator: ")
+for validator, stake in validators.items():
+    print(f"{validator}: {stake} stake")
+
+selected = proof_of_stake(validators)
+
+print("\nValidator terpilih: ", selected)

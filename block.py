@@ -1,6 +1,4 @@
 #Crowdfunding / Amal Transparan Sistem donasi dengan aliran dana yang dapat dilacak 100%
-#Crowdfunding / Amal Transparan Sistem donasi dengan aliran dana yang dapat dilacak 100%
-
 
 import hashlib
 import json
@@ -17,6 +15,7 @@ class Block:
         self.index = index
         self.timestamp = datetime.utcnow().isoformat()
         self.data = data
+        self.nonce = 0
         self.previous_hash = previous_hash
         self.hash = self.calculate_hash()
 
@@ -26,7 +25,8 @@ class Block:
             "index": self.index,
             "timestamp": self.timestamp,
             "data": self.data,
-            "previous_hash": self.previous_hash
+            "previous_hash": self.previous_hash,
+            "nonce": self.nonce
         }
 
         encoded = json.dumps(
@@ -36,36 +36,3 @@ class Block:
 
         return hashlib.sha256(encoded).hexdigest()
 
-import hashlib
-import json
-from datetime import datetime
-
-class Block:
-
-    def __init__(
-        self,
-        index: int,
-        data: dict,
-        previous_hash: str
-    ):
-        self.index = index
-        self.timestamp = datetime.utcnow().isoformat()
-        self.data = data
-        self.previous_hash = previous_hash
-        self.hash = self.calculate_hash()
-
-    def calculate_hash(self) -> str:
-
-        block_data = {
-            "index": self.index,
-            "timestamp": self.timestamp,
-            "data": self.data,
-            "previous_hash": self.previous_hash
-        }
-
-        encoded = json.dumps(
-            block_data,
-            sort_keys=True
-        ).encode()
-
-        return hashlib.sha256(encoded).hexdigest()
