@@ -13,6 +13,4 @@ def proof_of_work(block, difficulty):
 
     end_time = time.time()
 
-    print("\nMining Selesai!")
-    print("Nonce    :", block.nonce)
-    print("Waktu    :", round(end_time - start_time, 4), "detik")
+    return round(end_time - start_time, 4)

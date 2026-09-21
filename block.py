@@ -1,4 +1,4 @@
-#Crowdfunding / Amal Transparan Sistem donasi dengan aliran dana yang dapat dilacak 100%
+#Crowdfunding / Amal Transparan Sistem donasi dengan aliran dana yang dapat dilacak 100% HALAL
 
 import hashlib
 import json
