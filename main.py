@@ -8,17 +8,17 @@ for difficulty in [2, 3, 4, 5]:
 
     block = Block(
         index=1,
-        data="Donasi dari Hamba_Allah",
+        data={"donatur": "Hamba_Allah", "jumlah": 100000},
         previous_hash="0"
     )
 
     print("\n==============================")
     print("Difficulty :", difficulty)
 
-    proof_of_work(block, difficulty)
+    waktu = proof_of_work(block, difficulty)
 
     print("Nonce      :", block.nonce)
-    print("Waktu      : sudah ditampilkan di atas")
+    print("Waktu      :", waktu, "detik")
     print("Hash       :", block.hash)
 
 
