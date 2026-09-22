@@ -25,10 +25,10 @@ for difficulty in [2, 3, 4, 5]:
 print("\nPROOF OF STAKE (POS)")
 
 validators = {
-    "Donatur_1": 10,
-    "Platform_Admin": 20,
-    "Auditor_External": 30,
-    "Beneficiary": 40
+    "Donatur_1": 70,
+    "Platform_Admin": 10,
+    "Auditor_External": 10,
+    "Beneficiary": 10
 }
 
 print("\nValidator:")
